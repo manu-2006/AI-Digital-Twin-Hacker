@@ -164,6 +164,5 @@ This project is licensed under the MIT License.
 
 If you found this project useful, consider giving it a ⭐ on GitHub!
 
-
 👉 say **"add demo gif + deploy online"**
-I’ll upgrade it to **top 1% project level** 🚀
+I’ll upgr
