@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Scan Result</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h2>Scan Result for {{url}}</h2>
+
+<h3>Threat Level</h3>
+
+<div class="meter">
+</div>
+
+<p>{{threat_score}}% Risk</p>
+<h3>Open Ports Detected</h3>
+
+<ul>
+{% for port in open_ports %}
+<li>{{port}}</li>
+{% endfor %}
+</ul>
+
+<h3>Detected Vulnerabilities</h3>
+
+<ul>
+{% for v in vulnerabilities %}
+<li>{{v}}</li>
+{% endfor %}
+</ul>
+
+<h3>Predicted Attacks</h3>
+
+<ul>
+{% for attack, prob in attack_prediction.items() %}
+<li>{{attack}} — {{prob}}</li>
+{% endfor %}
+</ul>
+
+<h3>Estimated Exploit Time</h3>
+
+<ul>
+{% for attack, time in attack_time.items() %}
+<li>{{attack}} — {{time}}</li>
+{% endfor %}
+</ul>
+
+<h3>AI Security Recommendations</h3>
+
+<ul>
+{% for r in recommendations %}
+<li>{{r}}</li>
+{% endfor %}
+</ul>
+
+<h3>Admin Panels Found</h3>
+
+<ul>
+{% for panel in admin_panels %}
+<li>{{panel}}</li>
+{% endfor %}
+</ul>
+
+<h3>AI Security Advisor</h3>
+
+<ul>
+{% for tip in ai_advice %}
+<li>{{ tip }}</li>
+{% endfor %}
+</ul>
+
+<h3>AI Attack Path Simulation</h3>
+
+{% if attack_paths %}
+    {% for path in attack_paths %}
+        <p>
+        {% for step in path %}
+            {{ step }}<br>
+            {% if not loop.last %} ↓ {% endif %}
+        {% endfor %}
+        </p>
+        <br>
+    {% endfor %}
+{% else %}
+<p>No attack paths detected.</p>
+{% endif %}
+
+<a href="/">Scan Another Website</a>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Digital Twin Hacker</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<section class="hero">
+    <h1>AI Digital Twin Hacker</h1>
+    <p>Real-time vulnerability detection, attack prediction, and AI-driven security analysis.</p>
+</section>
+
+<div id="scanLoader" class="loader-screen">
+    <div class="loader-box">
+        <div class="spinner"></div>
+        <h2 id="loaderText">Initializing Scan...</h2>
+    </div>
+</div>
+
+<div class="container" id="scanner">
+
+    <h2 class="section-title reveal" style="text-align:center;">Scan Any Website Instantly</h2>
+
+    <div class="card input-card reveal">
+        <input id="url" placeholder="https://example.com">
+        <button id="scanBtn" class="futuristic-btn">🚀 Start Scan</button>
+    </div>
+
+    <div class="grid">
+        <div class="card reveal"><h3>Open Ports</h3><div id="ports"></div></div>
+        <div class="card reveal"><h3>Vulnerabilities</h3><div id="vulns"></div></div>
+        <div class="card reveal"><h3>Admin Panels</h3><div id="admin"></div></div>
+    </div>
+
+    <div class="grid">
+        <div class="card reveal">
+            <h3>🔥 Risk Level</h3>
+            <div id="riskLabel">0%</div>
+            <div class="risk-bar"><div id="riskFill"></div></div>
+            <div id="riskExplanation"></div> <!-- ✅ ONLY ONE -->
+        </div>
+
+        <div class="card reveal">
+            <h3>📊 Scan Analysis</h3>
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card reveal"><h3>Predicted Attacks</h3><div id="predictedAttacks"></div></div>
+        <div class="card reveal"><h3>Attack Time</h3><div id="attackTimeList"></div></div>
+    </div>
+
+    <div class="card reveal">
+        <h3>Attack Paths</h3>
+        <div id="attackPaths"></div>
+    </div>
+
+    <div class="card reveal">
+        <h3>AI Recommendations</h3>
+        <div id="aiAdvice"></div>
+    </div>
+
+    <!-- 🔥 BUTTONS -->
+    <div class="bottom-actions" id="actionButtons">
+        <button class="futuristic-btn" onclick="downloadReport()">📄 Download Report</button>
+        <button class="futuristic-btn secondary" onclick="location.reload()">🔁 Scan Another</button>
+    </div>
+
+</div>
+
+<div class="site-footer">
+    © 2026 AI Digital Twin Hacker | Developed by Manu
+</div>
+
+<!-- ✅ FIX: LOAD JS AFTER DOM -->
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

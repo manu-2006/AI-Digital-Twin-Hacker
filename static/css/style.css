@@ -1,0 +1,353 @@
+/* ===== BASE ===== */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: #0a0a0f;
+    color: #e5e7eb;
+    overflow-x: hidden;
+}
+
+/* ===== PARTICLES (FIXED CLICK ISSUE) ===== */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none; /* 🔥 IMPORTANT */
+}
+
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    padding: 120px 20px 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.hero p {
+    margin-top: 10px;
+    color: #9ca3af;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2; /* 🔥 ABOVE BACKGROUND */
+}
+
+/* ================================= */
+/* 🔥 GRID */
+/* ================================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: stretch;
+    gap: 18px;
+}
+
+/* ================================= */
+/* 🔥 FUTURISTIC CARDS */
+/* ================================= */
+.card {
+    position: relative;
+
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(18px);
+
+    border-radius: 18px;
+    padding: 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: all 0.3s ease;
+    color: #e5e7eb;
+    overflow: hidden;
+
+    margin-bottom: 10px;
+}
+
+/* 🔥 FIX: GLOW DOES NOT BLOCK INPUT */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    padding: 1px;
+
+    background: linear-gradient(
+        135deg,
+        transparent,
+        rgba(99,102,241,0.4),
+        transparent
+    );
+
+    -webkit-mask: 
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none; /* 🔥 CRITICAL FIX */
+}
+
+/* HOVER */
+.card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(99,102,241,0.15);
+}
+
+/* TITLE */
+.card h3 {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* ================================= */
+/* 🔥 INPUT BAR */
+/* ================================= */
+.input-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: rgba(255,255,255,0.04);
+    border-radius: 16px;
+    padding: 14px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    max-width: 800px;
+    margin: 0 auto 25px;
+
+    position: relative;
+    z-index: 3; /* 🔥 ABOVE CARD LAYER */
+}
+
+/* INPUT */
+input {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+
+    width: 100%;
+    outline: none;
+
+    position: relative;
+    z-index: 4; /* 🔥 CLICKABLE */
+}
+
+/* INPUT FOCUS */
+input:focus {
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.4);
+}
+
+/* BUTTON */
+.futuristic-btn {
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+    white-space: nowrap;
+
+    position: relative;
+    z-index: 4; /* 🔥 CLICKABLE */
+}
+
+.futuristic-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99,102,241,0.3);
+}
+
+/* ================================= */
+/* 🔥 LIST ITEMS */
+/* ================================= */
+.list-item {
+    background: rgba(255,255,255,0.06);
+    padding: 8px 12px;
+    margin: 6px 0;
+    border-radius: 10px;
+    font-size: 13px;
+
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.2s;
+}
+
+.list-item:hover {
+    background: rgba(99,102,241,0.15);
+}
+
+/* ===== RISK ===== */
+.risk-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#riskFill {
+    height: 100%;
+    width: 0%;
+    transition: 0.5s ease;
+}
+
+#riskLabel {
+    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* ================================= */
+/* 🔥 SCROLL REVEAL */
+/* ================================= */
+.reveal {
+    opacity: 1; /* 🔥 TEMP FIX */
+    transform: none;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================= */
+/* 🔥 LOADER */
+/* ================================= */
+.loader-screen {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+
+    background: rgba(10,10,25,0.45);
+    backdrop-filter: blur(12px);
+
+    pointer-events: none; /* 🔥 DOES NOT BLOCK INPUT */
+}
+
+.loader-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.spinner {
+    width: 55px;
+    height: 55px;
+
+    border: 3px solid rgba(255,255,255,0.15);
+    border-top: 3px solid #6366f1;
+
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+
+    margin-bottom: 20px;
+}
+
+#loaderText {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.bottom-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.futuristic-btn.secondary {
+    background: rgba(255,255,255,0.1);
+}
+
+/* ===== SMART BUTTON UX ===== */
+.bottom-actions {
+    text-align: center;
+    margin-top: 30px;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.bottom-actions.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== ATTACK PATH UI ===== */
+.attack-path-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.attack-title {
+    color: #6366f1;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.attack-step {
+    background: rgba(255,255,255,0.06);
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* ===== WEBSITE FOOTER ===== */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+
+    font-size: 13px;
+    color: #9ca3af;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+}
+
+#scanner {
+    min-height: 800px;
+}
+/* 🔥 FIX EMPTY SCREEN LOOK */
+#scanner {
+    min-height: 800px;
+}
+
+/* 🔥 ENSURE TEXT VISIBILITY */
+.list-item {
+    color: #e5e7eb !important;
+}
